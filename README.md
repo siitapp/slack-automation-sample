@@ -23,16 +23,18 @@ To use this template, you need to install and configure the Slack CLI.
 Step-by-step instructions can be found in our
 [Quickstart Guide](https://api.slack.com/automation/quickstart).
 
+Note: on Mac using homebrew you can just run `brew install slack-cli`.
+
 ### Clone the Template
 
 Start by cloning this repository:
 
 ```zsh
 # Clone this project onto your machine
-$ git clone https://github.com/siitapp/slack-automation-sample
+$ slack-cli create siit_sample -t siitapp/slack-automation-sample
 
 # Change into the project directory
-$ cd slack-automation-sample
+$ cd siit_sample
 ```
 
 ## Running Your Project Locally
@@ -43,7 +45,7 @@ name has the string `(local)` appended.
 
 ```zsh
 # Run app locally
-$ slack run
+$ slack-cli run
 
 Connected, awaiting events
 ```
@@ -57,10 +59,10 @@ Customize the logic to your need (e.g if you want to add custom form values to y
 ## Deploying Your App
 
 Once development is complete, deploy the app to Slack infrastructure using
-`slack deploy`:
+`slack-cli deploy`:
 
 ```zsh
-$ slack deploy
+$ slack-cli deploy
 ```
 
 Don't forget that you need the Siit API key in the env: `slack env add SIIT_API_KEY <your_api_key>` !

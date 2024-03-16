@@ -14,5 +14,7 @@ export default Manifest({
   functions: [SubmitRequest],
   outgoingDomains: ['api.siit.io'],
   types: [],
-  botScopes: [],
+  botScopes: [
+    "commands"
+  ],
 });
