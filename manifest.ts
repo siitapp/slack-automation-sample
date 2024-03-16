@@ -10,7 +10,7 @@ import { SiitRequestType } from './types.ts';
 export default Manifest({
   name: "Siit",
   description: "An example of interacting with Siit API using Slack automations",
-  icon: "assets/siit_logo.png",
+  icon: "assets/siit-logo.png",
   functions: [SubmitRequest],
   outgoingDomains: ['api.siit.io'],
   types: [],
