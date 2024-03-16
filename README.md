@@ -65,7 +65,10 @@ Once development is complete, deploy the app to Slack infrastructure using
 $ slack-cli deploy
 ```
 
-Don't forget that you need the Siit API key in the env: `slack env add SIIT_API_KEY <your_api_key>` !
+Don't forget that you need the Siit API key in the env:
+```zsh
+$ slack-cli env add SIIT_API_KEY <your_api_key>
+```
 
 ## Resources
 
