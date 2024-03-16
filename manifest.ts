@@ -1,6 +1,5 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
 import { SubmitRequest } from "./functions/submit_request.ts";
-import { SiitRequestType } from './types.ts';
 
 /**
  * The app manifest contains the app's configuration. This

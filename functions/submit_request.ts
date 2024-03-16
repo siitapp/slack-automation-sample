@@ -1,6 +1,10 @@
 import { DefineFunction, Schema, SlackFunction, DefineType } from "deno-slack-sdk/mod.ts";
 
-import { SiitRequestType } from '../types.ts';
+interface SiitRequestType {
+  title: string;
+  description?: string;
+  admin_permalink_url: string;
+}
 
 /**
  * Functions are reusable building blocks of automation that accept
@@ -8,10 +12,11 @@ import { SiitRequestType } from '../types.ts';
  * be used independently or as steps in workflows.
  * https://api.slack.com/automation/functions/custom
  */
+// https://api.slack.com/automation/types
 export const SubmitRequest = DefineFunction({
   callback_id: "submit_siit_request",
   title: "Siit - Submit Request",
-  description: "Create a Siit request from submitted form",
+  description: "Create a Siit request from a submitted form",
   source_file: "functions/submit_request.ts",
   input_parameters: {
     properties: {
@@ -79,14 +84,14 @@ export default SlackFunction(
     } = inputs;
     // we have to manually build the custom forms, insert as many items as you need
     const custom_form_inputs = [
-      { label: custom_form_input_1_label, answer: custom_form_input_1_answer }
+      { label: custom_form_input_1_label, value: custom_form_input_1_answer }
     ]
     const requestParams = {
       title,
       description,
       custom_form_inputs,
       slack_user_id: requester,
-      slack_channel: channel,
+      slack_channel_id: channel,
     }
 
     const headers = {
@@ -102,9 +107,10 @@ export default SlackFunction(
         const error = `Failed to call an API (status: ${response.status}, body: ${body})`;
         return { error };
       }
-      const siit_request : SiitRequestType = await response.json()['result'];
+      let json = await response.json();
+      let result : SiitRequestType = json.result;
 
-      return { outputs: { title: siit_request.title, admin_permalink_url: siit_request.admin_permalink_url } };
+      return { outputs: { title: result.title, admin_permalink_url: result.admin_permalink_url } };
     } catch (err) {
       const error = `Failed to call API due to ${err}`;
       return { error };
