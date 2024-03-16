@@ -96,8 +96,8 @@ export default SlackFunction(
     try {
       const endpoint = "https://api.siit.io/v1/requests/slack";
       const response = await fetch(endpoint, { method: "POST", headers, body: JSON.stringify(requestParams) });
-      if (response.status != 200) {
-        // In the case where the API responded with non 200 status
+      if (response.ok) {
+        // In the case where the API responded with non 2xx status
         const body = await response.text();
         const error = `Failed to call an API (status: ${response.status}, body: ${body})`;
         return { error };
