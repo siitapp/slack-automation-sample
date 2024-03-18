@@ -31,10 +31,10 @@ Start by cloning this repository:
 
 ```zsh
 # Clone this project onto your machine
-$ slack-cli create siit-aumation-sample -t siitapp/slack-automation-sample
+$ slack-cli create siit-automation-sample -t siitapp/slack-automation-sample
 
 # Change into the project directory
-$ cd siit-aumation-sample
+$ cd siit-automation-sample
 ```
 
 ## Running Your Project Locally
