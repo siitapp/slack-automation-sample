@@ -70,6 +70,15 @@ Don't forget that you need the Siit API key in the env:
 $ slack-cli env add SIIT_API_KEY <your_api_key>
 ```
 
+From that point you can use the function as a step in the workflow builder, howver you might want to make that step visible to other members of your workspace ([see doc]([url](https://api.slack.com/automation/functions/custom#distribute))).
+
+Example to give access to everyone in the workspace:
+```
+slack-cli function distribute --name  <callback_id_of_your_function> --everyone --grant
+```
+
+Where in this sample your would replace `<callback_id_of_your_function>` by `submit_siit_request`.
+
 ## Resources
 
 To learn more about developing automations on Slack, visit the following:
