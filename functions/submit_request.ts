@@ -28,7 +28,7 @@ export const SubmitRequest = DefineFunction({
       },
       description: {
         type: Schema.types.string,
-        maxLength: 1000,
+        maxLength: 5000,
         description: "Optionnal description of the Request",
       },
       requester: {
@@ -37,7 +37,11 @@ export const SubmitRequest = DefineFunction({
       },
       channel: {
         type: Schema.slack.types.channel_id,
-        description: "Optionnal Slack channel that can be attached",
+        description: "Optionnal Slack channel (or use message_link directly)",
+      },
+      message_link: {
+        type: Schema.types.string,
+        description: "Optionnal Slack Message link, use this if you want to start a public request by referencing a message",
       },
       // Objects cannot be used as input for now so we define two field per custom input
       // https://api.slack.com/automation/types#object
@@ -79,6 +83,7 @@ export default SlackFunction(
       description,
       requester,
       channel,
+      message_link,
       custom_form_input_1_label,
       custom_form_input_1_answer,
     } = inputs;
@@ -92,6 +97,7 @@ export default SlackFunction(
       custom_form_inputs,
       slack_user_id: requester,
       slack_channel_id: channel,
+      slack_message_link: message_link,
     }
 
     const headers = {
