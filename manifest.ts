@@ -7,7 +7,7 @@ import { SubmitRequest } from "./functions/submit_request.ts";
  * https://api.slack.com/automation/manifest
  */
 export default Manifest({
-  name: "Siit",
+  name: "Siit Automation Sample",
   description: "An example of interacting with Siit API using Slack automations",
   icon: "assets/siit-logo.png",
   functions: [SubmitRequest],
