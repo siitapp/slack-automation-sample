@@ -97,7 +97,7 @@ export default SlackFunction(
       custom_form_inputs,
       slack_user_id: requester,
       slack_channel_id: channel,
-      slack_message_link: message_link,
+      slack_direct_link: message_link,
     }
 
     const headers = {
